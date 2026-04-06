@@ -257,9 +257,16 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 });
 
 const getCurrentuser = asyncHandler(async (req, res) => {
+  const user = await User.find();
+
+  if (!user) {
+    return res.status(401).json({
+      message: "User not authenticated",
+    });
+  }
   return res
     .status(200)
-    .json(new ApiResponse(200, "Current user fetched successfully", req.user));
+    .json(new ApiResponse(200, "Current user fetched successfully", user));
 });
 
 const updateAccountDetails = asyncHandler(async (req, res) => {
