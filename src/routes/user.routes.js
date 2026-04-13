@@ -44,8 +44,8 @@ router.route("/change-password").post(verifyJWT, changeCurrentPassword);
 router.route("/update-account").patch(verifyJWT, updateAccountDetails);
 router.route("/avatar").patch(verifyJWT, upload.single("avatar"), updateAvatar);
 router
-  .route("coverImg")
-  .patch(verifyJWT, upload.single("/coverImage"), updateCoverImage);
+  .route("/coverImg")
+  .patch(verifyJWT, upload.single("coverImage"), updateCoverImage);
 router.route("/c/:username").get(verifyJWT, getuserChanelProfil);
 router.route("history").get(verifyJWT, getWatchHistory);
 
